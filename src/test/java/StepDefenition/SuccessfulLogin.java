@@ -13,37 +13,35 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 public class SuccessfulLogin {
 public WebDriver driver;
 		
-		
-		@Given("user should have launched the application")
-		public void user_should_have_launched_the_application() {
-			WebDriverManager.chromedriver().setup();
-	        driver = new ChromeDriver();
-	        driver.manage().window().maximize();
-	        driver.get("http://demowebshop.tricentis.com");
-		}
 
-		@When("valid details are entered")
-		public void valid_details_are_entered() {
-			driver.findElement(By.linkText("Log in")).click();
-	        driver.findElement(By.id("Email")).sendKeys("manipal822@gmail.com");
-	        driver.findElement(By.id("Password")).sendKeys("manipal123");
-		}
+@Given("user should have launched the application")
+public void user_should_have_launched_the_application() {
+	WebDriverManager.chromedriver().setup();
+    driver = new ChromeDriver();
+    driver.manage().window().maximize();
+    driver.get("http://demowebshop.tricentis.com");
+}
 
-		@When("clicked on login button")
-		public void clicked_on_login_button() {
-			driver.findElement(By.xpath("//input[@type= 'submit' and @value='Log in']")).click();
-		    
-		}
+@When("valid username is entered")
+public void valid_username_is_entered() {
+	driver.findElement(By.linkText("Log in")).click();
+    driver.findElement(By.id("Email")).sendKeys("manipal822@gmail.com");
+    driver.findElement(By.id("Password")).sendKeys("manipal123");
+}
 
-		@Then("home screen should be get displayed")
-		public void home_screen_should_be_get_displayed() {
-			 String pageTitle1=driver.getTitle();
-		        System.out.println(pageTitle1);
-		        driver.close();
-		}
+@When("clicked on login button")
+public void clicked_on_login_button() {
+	driver.findElement(By.xpath("//input[@type= 'submit' and @value='Log in']")).click();
+    
+}
 
+@Then("home screen should be get displayed")
+public void home_screen_should_be_get_displayed() {
+	 String pageTitle1=driver.getTitle();
+        System.out.println(pageTitle1);
+        driver.close();
 
-	}
-
-
+}
+    
+}
 
